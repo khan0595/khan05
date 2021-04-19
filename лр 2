@@ -1,0 +1,52 @@
+#include <iostream.h>
+#include <string.h>
+#include <conio.h>
+#include <math.h>
+#include <windows.h>
+char OutRus[256];
+//---------------------------------------------------------------------------
+char* RUS(const char*text)
+{
+    CharToOem(text,OutRus);
+    return OutRus;
+}
+ 
+void main()
+{
+    struct strc
+    {
+        char date[10];
+        char name[100];
+        char nameg[100];
+        double time;
+        int tarif;
+        int kod;
+        char nomer[7];
+        char nab[7];
+    } mats[10];
+    int i,n,stime=0,sum,ssum=0;
+char nameg[100];
+    cout<<RUS("Введите количество абонентов:"); cin>>n;
+    for (i=0;i<n;i++)
+    {
+        cout<<endl<<RUS("Номер:")<<i+1;
+        cout<<endl<<RUS("Введите дату:"); cin>>mats[i].date;
+        cout<<endl<<RUS("Введите код города:"); cin>>mats[i].kod;
+        cout<<endl<<RUS("Введите город:"); cin>>mats[i].name;
+        cout<<endl<<RUS("Введите время:"); cin>>mats[i].time;
+        cout<<endl<<RUS("Введите тариф:"); cin>>mats[i].tarif;
+        cout<<endl<<RUS("Введите номер телефона:"); cin>>mats[i].nomer;
+        cout<<endl<<RUS("Введите номер абонента:"); cin>>mats[i].nab;
+    }
+    cout<<endl<<RUS("Введите город для вывода:"); cin>>nameg;
+    for (i=0;i<n;i++)
+    {   if strcmp(nameg,mats[i].name)
+ {
+    stime=stime+mats[i].time;
+            sum=mats[i].time*mats[i].tarif;  }
+      cout<<endl<<RUS("Сумма абонента ")<<i<<":"<<sum<<endl;}
+          ssum=ssum+sum;
+      cout<<endl<<RUS("Общее время разговоров:")<<stime;
+    cout<<endl<<RUS("Общая сумма разговоров:")<<ssum;
+    getch();
+}
