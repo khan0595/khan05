@@ -1,0 +1,18 @@
+Stack* DeleteMinEl(Stack *p)
+{while(p->info < 0){ p = p->next;if (p == 0) break;
+Stack *begin = p;
+if (begin == 0) return begin;
+while(begin->next != 0)
+     {
+           Stack *t = begin;
+           while(1)
+                        {t = t->next;
+                        if (t == 0 || t->info >= 0) break;
+                        }
+           begin->next = t;
+           if (t == 0) break;
+           begin = begin->next;
+ 
+     }
+return p;
+}
